@@ -17,7 +17,10 @@ class HomePage extends StatelessWidget {
             NotesList(),
             FloatingActionButton(
               onPressed: () {
-                showBottomSheet(
+                showModalBottomSheet(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
                   context: context,
                   builder: (context) {
                     return Botomshetwidget();
