@@ -1,7 +1,12 @@
 import 'package:app/page/home_page.dart';
+import 'package:app/widget/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox(kprimaryhive);
+
   runApp(NoteApp());
 }
 
