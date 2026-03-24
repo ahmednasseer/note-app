@@ -4,15 +4,23 @@ import 'package:flutter/material.dart';
 class CoustomTextField extends StatelessWidget {
   final String hint;
   final int maxlines;
+  final void Function(String?)? onsaved;
   const CoustomTextField({
     super.key,
     required this.hint,
     required this.maxlines,
+    required this.onsaved,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      onSaved: onsaved,
+      validator: (value) {
+        if (value?.isEmpty ?? true) {
+          return 'برجاء ادخل ملاحظتك';
+        }
+      },
       cursorColor: kprimaryColor,
       decoration: InputDecoration(
         hintMaxLines: maxlines,
@@ -26,6 +34,6 @@ class CoustomTextField extends StatelessWidget {
 
   OutlineInputBorder buildborder([Color? color]) => OutlineInputBorder(
     borderSide: BorderSide(color: color ?? Colors.white),
-    borderRadius: BorderRadius.circular(8), // يفضل تقليل الـ Radius للحقول
+    borderRadius: BorderRadius.circular(8),
   );
 }
